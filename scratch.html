@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="C:\Users\PC\Downloads\jquery-3.2.1.min.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+
+<div id="aaa"></div>
+
+
+<script>
+    $.fn.durixDataSource = function(element) {
+        var data = {
+            transport: {
+                url: "",
+                method: "GET",
+                type: "JSON"
+            },
+            data: function() {
+                return _data
+            },
+            _data: []
+        }
+        if(typeof(element) !== "undefined") {
+            $.extend(data, element);
+        }
+        return data;
+    }
+
+
+
+
+    $.fn.durixGrid = function(element){
+        var data = {
+            dataSource: new $.fn.durixDataSource()
+        }
+
+        $.extend(data, element);
+        return data;
+    }
+
+    var aaa = $("#aaa").durixGrid({
+        dataSource: {
+            transport: {
+                url:"asd"
+            }
+        }
+    });
+
+    var dataSource = new durixDataSource({a:"a"});
+</script>
+</body>
+</html>
